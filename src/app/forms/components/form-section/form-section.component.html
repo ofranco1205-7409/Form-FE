@@ -1,0 +1,38 @@
+<div>
+  <div class="card mb-2">
+    <div
+      class="card-header"
+      style="background-color: rgb(103, 58, 183); color: rgba(255, 255, 255, 1)"
+    >
+      <h2 class="card-title">Seccion Header 1</h2>
+    </div>
+    <div class="card-body">
+      <p class="card-text">Seccion description</p>
+      <h6>Seccion description</h6>
+    </div>
+  </div>
+
+  <form
+    class="row g-3 needs-validation"
+    [formGroup]="myForm"
+    (ngSubmit)="saveSection()"
+  >
+    <form-question [myForm]="myForm"></form-question>
+
+    <div>
+      <button type="button" class="btn btn-secondary">Atrás</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        [disabled]="myForm.invalid"
+        type="submit"
+      >
+        Siguiente
+      </button>
+    </div>
+  </form>
+  <pre>
+    {{ myForm.value | json }}
+    invalid:{{ myForm.invalid | json }}
+  </pre>
+</div>
