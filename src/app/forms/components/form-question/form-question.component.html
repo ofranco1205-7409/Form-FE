@@ -1,27 +1,13 @@
 <div class="card mb-2">
   <div class="card-body">
-    <h6>1.1.-Reforzamiento operacional de la Troncal del Pacífico</h6>
-
-    <!--
-    <input
-      type="text"
-      formControlName="this.myForm.get('nombre')"
-      [placeholder]="this.myForm | json"
-    />
-
-    <input
-      type="text"
-      [formControl]="control!"
-      [placeholder]="control | json"
-    />
-    -->
-    <div [formGroup]="myForm">
-      <input
-        type="text"
-        formControlName="comentario"
-        placeholder="comentario"
-      />
-
+    <div [formGroup]="group" class="question-group">
+      <h6>{{ qTitle }}</h6>
+      <question-simple-priority
+        *ngIf="isSimplePriority"
+      ></question-simple-priority>
+      <question-multiple-project-priority
+        *ngIf="isValueProjectPriority"
+      ></question-multiple-project-priority>
       <div class="row mb-1">
         <div class="col-sm-6"></div>
         <div class="container col-sm-6">
@@ -39,49 +25,13 @@
         <div class="col-sm-6">Impacto</div>
         <div class="container col-sm-6">
           <div class="row">
-            <div class="col-1">
+            <div class="col-1" *ngFor="let i of [1, 2, 3, 4, 5]">
               <input
                 class="form-check-input"
                 type="radio"
-                value="1"
+                value="{{ i }}"
                 formControlName="impacto"
-                id="impacto1"
-              />
-            </div>
-            <div class="col-1">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="2"
-                formControlName="impacto"
-                id="impacto2"
-              />
-            </div>
-            <div class="col-1">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="3"
-                formControlName="impacto"
-                id="impacto3"
-              />
-            </div>
-            <div class="col-1">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="4"
-                formControlName="impacto"
-                id="impacto4"
-              />
-            </div>
-            <div class="col-1">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="5"
-                formControlName="impacto"
-                id="impacto5"
+                [id]="'impacto' + i"
               />
             </div>
           </div>
@@ -92,49 +42,13 @@
         <div class="col-sm-6">Factibilidad</div>
         <div class="container col-sm-6">
           <div class="row">
-            <div class="col-1">
+            <div class="col-1" *ngFor="let i of [1, 2, 3, 4, 5]">
               <input
                 class="form-check-input"
                 type="radio"
-                value="1"
+                value="{{ i }}"
                 formControlName="factibilidad"
-                id="factibilidad1"
-              />
-            </div>
-            <div class="col-1">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="2"
-                formControlName="factibilidad"
-                id="factibilidad2"
-              />
-            </div>
-            <div class="col-1">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="3"
-                formControlName="factibilidad"
-                id="factibilidad3"
-              />
-            </div>
-            <div class="col-1">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="4"
-                formControlName="factibilidad"
-                id="factibilidad4"
-              />
-            </div>
-            <div class="col-1">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="5"
-                formControlName="factibilidad"
-                id="factibilidad5"
+                [id]="'factibilidad' + i"
               />
             </div>
           </div>
@@ -145,49 +59,13 @@
         <div class="col-sm-6">Urgencia</div>
         <div class="container col-sm-6">
           <div class="row">
-            <div class="col-1">
+            <div class="col-1" *ngFor="let i of [1, 2, 3, 4, 5]">
               <input
                 class="form-check-input"
                 type="radio"
-                value="1"
+                value="{{ i }}"
                 formControlName="urgencia"
-                id="urgencia1"
-              />
-            </div>
-            <div class="col-1">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="2"
-                formControlName="urgencia"
-                id="urgencia2"
-              />
-            </div>
-            <div class="col-1">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="3"
-                formControlName="urgencia"
-                id="urgencia3"
-              />
-            </div>
-            <div class="col-1">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="4"
-                formControlName="urgencia"
-                id="urgencia4"
-              />
-            </div>
-            <div class="col-1">
-              <input
-                class="form-check-input"
-                type="radio"
-                value="5"
-                formControlName="urgencia"
-                id="urgencia5"
+                [id]="'urgencia' + i"
               />
             </div>
           </div>

@@ -11,6 +11,8 @@ import { FormBodyComponent } from './components/form-body/form-body.component';
 import { FormfooterComponent } from './components/form-footer/form-footer.component';
 import { FormSectionComponent } from './components/form-section/form-section.component';
 import { FormQuestionComponent } from './components/form-question/form-question.component';
+import { SimplePriorityComponent } from './components/simple-priority/simple-priority.component';
+import { MultipleProjectPriorityComponent } from './components/multiple-project-priority/multiple-project-priority.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { FormQuestionComponent } from './components/form-question/form-question.
     FormfooterComponent,
     FormSectionComponent,
     FormQuestionComponent,
+    SimplePriorityComponent,
+    MultipleProjectPriorityComponent,
   ],
   imports: [CommonModule, FormsRoutingModule, ReactiveFormsModule],
 })

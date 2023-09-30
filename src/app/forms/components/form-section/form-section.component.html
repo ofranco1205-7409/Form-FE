@@ -4,27 +4,54 @@
       class="card-header"
       style="background-color: rgb(103, 58, 183); color: rgba(255, 255, 255, 1)"
     >
-      <h2 class="card-title">Seccion Header 1</h2>
+      <h2 class="card-title">{{ sTitle }}</h2>
     </div>
     <div class="card-body">
-      <p class="card-text">Seccion description</p>
-      <h6>Seccion description</h6>
+      <p class="card-text">{{ sDescription }}</p>
+      <h6>{{ sDescription }}</h6>
     </div>
   </div>
 
   <form
     class="row g-3 needs-validation"
-    [formGroup]="myForm"
-    (ngSubmit)="saveSection()"
+    [formGroup]="formulario"
+    (ngSubmit)="submitForm()"
   >
-    <form-question [myForm]="myForm"></form-question>
+    <div formArrayName="questions">
+      <pre>
+        {{ questions }}
+        {{ questions.length }}
+      </pre>
+      <div
+        [formGroupName]="i"
+        *ngFor="let question of questions.controls; let i = index"
+      >
+        {{ i }}
+        {{ question.value | json }}
+      </div>
 
+      <div *ngFor="let question of questions.controls; let i = index">
+        <form-question
+          [_group]="question"
+          [index]="i"
+          (eliminar)="eliminarGrupo($event)"
+        ></form-question>
+      </div>
+    </div>
+
+    <!--
+    <form-question
+    group={{questions.at(0) as FormGroup}}
+    [index]="1"
+    (eliminar)="eliminarGrupo($event)"
+  ></form-question>
+    -->
     <div>
       <button type="button" class="btn btn-secondary">Atrás</button>
       <button
         type="button"
         class="btn btn-primary"
-        [disabled]="myForm.invalid"
+        [disabled]="formulario.invalid"
         type="submit"
       >
         Siguiente
@@ -32,7 +59,10 @@
     </div>
   </form>
   <pre>
-    {{ myForm.value | json }}
-    invalid:{{ myForm.invalid | json }}
+    formulario.value= {{ formulario.value | json }}
+    invalid:{{ formulario.invalid | json }}
+    formulario.value.questions[0]  = {{
+      formulario.value.questions[0].qTitle | json
+    }}
   </pre>
 </div>

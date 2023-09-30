@@ -1,9 +1,9 @@
 export enum QuestionType {
-  Simple_priority = 'Simple priority',
-  Value_priority = 'Value priority',
-  Open = 'Open',
-  Single_choice = 'Single Choice',
-  Multiple_choice = 'Multiple Choice',
+  Simple_priority = 'SimplePriority', //Project_rate
+  Value_project_priority = 'MultipleProjectPriority', //Project[]
+  Open = 'Open', //string
+  Single_choice = 'SingleChoice', //radio -String
+  Multiple_choice = 'MultipleChoice', //check - string[]
 }
 
 /**
@@ -25,23 +25,29 @@ export interface User {
 }
 
 export interface Section {
-  sectionId: string;
-  title: string;
-  description: string;
-  questions: Question[];
+  sId: string;
+  sTitle: string;
+  sDescription: string;
+  sQuestions: Question[];
 }
 
 export interface Question {
-  qID: string;
-  type: QuestionType;
-  title: string;
-  options?: Projects | string[] | string;
+  qId: string;
+  qType: QuestionType;
+  qTitle: string;
+  qOptions?: Project[] | Project_rate | string[] | string;
 }
 
-export interface Projects {
+export interface Project {
   priority: number;
   title: string;
-  values?: number[];
+  project_rate: Project_rate;
+}
+
+export interface Project_rate {
+  impacto: number;
+  factibilidad: number;
+  urgencia: number;
 }
 
 /**
@@ -60,5 +66,5 @@ export interface PollParticipants {
 export interface QuestionReply {
   qID: string;
   type: QuestionType;
-  reply: Projects | string[] | string;
+  reply: Project | Project_rate | string[] | string;
 }
