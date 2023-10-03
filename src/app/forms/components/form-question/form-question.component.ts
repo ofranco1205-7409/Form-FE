@@ -44,6 +44,6 @@ export class FormQuestionComponent {
     const type: QuestionType = this.group.value.qType;
     //console.log('isSimplePriority', type == QuestionType.Simple_priority);
 
-    return type == QuestionType.Value_project_priority;
+    return type == QuestionType.Multiple_project_priority;
   }
 }

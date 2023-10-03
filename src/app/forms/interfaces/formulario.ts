@@ -1,6 +1,6 @@
 export enum QuestionType {
   Simple_priority = 'SimplePriority', //Project_rate
-  Value_project_priority = 'MultipleProjectPriority', //Project[]
+  Multiple_project_priority = 'MultipleProjectPriority', //Project[]
   Open = 'Open', //string
   Single_choice = 'SingleChoice', //radio -String
   Multiple_choice = 'MultipleChoice', //check - string[]
@@ -35,13 +35,13 @@ export interface Question {
   qId: string;
   qType: QuestionType;
   qTitle: string;
-  qOptions?: Project[] | Project_rate | string[] | string;
+  qOptions: Project[] | Project_rate | string[] | string;
 }
 
 export interface Project {
-  priority: number;
+  pId: number;
   title: string;
-  project_rate: Project_rate;
+  priority: number;
 }
 
 export interface Project_rate {

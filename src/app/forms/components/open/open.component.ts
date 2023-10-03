@@ -1,23 +1,23 @@
-import { Component, Input, inject } from '@angular/core';
-import { FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
+import { Component, inject, Input } from '@angular/core';
 import { Question, QuestionType } from '../../interfaces/formulario';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { FormService } from '../../services/form.service';
 
 @Component({
-  selector: 'question-simple-priority',
-  templateUrl: './simple-priority.component.html',
-  styleUrls: ['./simple-priority.component.css'],
+  selector: 'question-open',
+  templateUrl: './open.component.html',
+  styleUrls: ['./open.component.css'],
 })
-export class SimplePriorityComponent {
+export class OpenComponent {
   private fb = inject(FormBuilder);
   private formService = inject(FormService);
 
-  @Input() _formGroup: AbstractControl = this.fb.group({});
+  _formGroup: AbstractControl = this.fb.group({});
   @Input() question: Question = {
     qId: '',
-    qType: QuestionType.Simple_priority,
+    qType: QuestionType.Open,
     qTitle: 'No inicializada',
-    qOptions: { impacto: 5, factibilidad: 5, urgencia: 5 },
+    qOptions: 'Reply vacio',
   };
 
   constructor() {}
@@ -26,7 +26,7 @@ export class SimplePriorityComponent {
     this._formGroup = this.formService.formulario.get(
       this.question.qId
     ) as AbstractControl;
-
+    console.log('this._formGroup as FormGroup:' + this._formGroup);
     return this._formGroup as FormGroup;
   }
 }

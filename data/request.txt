@@ -1,0 +1,146 @@
+
+Crea un ejemplo ejemplo de componente padre que renderiza un formulario con sus botones de submit
+y utiliza componentes hijos para mapear los controles en las diferentes "questions" de anera dinamica
+segun la data mostrada en el "formulario" siguiente. Utiliza o corrige las interfaces mostradas segun sea necesario.
+Encapsula la logica en un "service" de angular.
+Crea en ejemplo de un formulario reativo que mappe los controles del objeto formulario
+usando FormGroup,FormControl,FormArray, etc:
+-------------------------------------------------------------------
+"formulario":{
+      "id": "1",
+      "title": "Taller Estratégico Regional 1",
+      "description": "",
+      "img": "",
+      "sections": [
+        {
+          "sectionId": "1",
+          "title": "Seccion1",
+          "description": "Desc 1",
+          "questions": [
+            {
+              "qId": "1",
+              "qType": "Simple_priority",
+              "qTitle": "Califique el proyecto",
+              "qOptions": [{ "impacto": 1, "factibilidad": 2, "urgencia": 3 }]
+            },
+            {
+              "qID": "2",
+              "type": "Value_priority",
+              "qTitle": "Asigna prioridad a los proyectos",
+              "options": [
+                { "pId": "1", "priority": 1, "title": "{1} Proyecto 1" },
+                { "pId": "2", "priority": 2, "title": "{2} Proyecto 2" },
+                { "pId": "3", "priority": 3, "title": "{3} Proyecto 3" }
+              ]
+            },
+            {
+              "qId": "3",
+              "type": "Open",
+              "qTitle": "Responda la pregunta",
+              "options": "Respuesta simple"
+            },
+            {
+              "qId": "4",
+              "type": "Single_choice",
+              "qTitle": "Selecciones solo una opcion",
+              "options": ["Option1", "Option2", "Option3"]
+            },
+            {
+              "qId": "5",
+              "type": "Multiple_choice",
+              "qTitle": "Seleccione todas las que apliquen",
+              "options": ["Option1", "Option2", "Option3", "Option4"]
+            }
+          ]
+        },
+        {
+          "sectionId": "2",
+          "title": "Seccion2",
+          "description": "Desc 2",
+          "questions": [
+            {
+              "qId": "61",
+              "qType": "Simple_priority",
+              "qTitle": "Califique el proyecto",
+              "qOptions": [{ "impacto": 1, "factibilidad": 2, "urgencia": 3 }]
+            },
+            {
+              "qID": "7",
+              "type": "Value_priority",
+              "qTitle": "Asigna prioridad a los proyectos",
+              "options": [
+                { "pId": "1", "priority": 1, "title": "{1} Proyecto 1" },
+                { "pId": "2", "priority": 2, "title": "{2} Proyecto 2" },
+                { "pId": "3", "priority": 3, "title": "{3} Proyecto 3" }
+              ]
+            },
+            {
+              "qId": "8",
+              "type": "Open",
+              "qTitle": "Responda la pregunta",
+              "options": "Respuesta simple"
+            },
+            {
+              "qId": "9",
+              "type": "Single_choice",
+              "qTitle": "Selecciones solo una opcion",
+              "options": ["Option1", "Option2", "Option3"]
+            },
+            {
+              "qId": "5",
+              "type": "Multiple_choice",
+              "qTitle": "Seleccione todas las que apliquen",
+              "options": ["Option1", "Option2", "Option3", "Option4"]
+            }
+          ]
+        }
+      ]
+    }
+-------------------------------------------------------------------
+//interfaces
+
+export enum QuestionType {
+  Simple_priority = 'SimplePriority', //Project_rate
+  Value_project_priority = 'MultipleProjectPriority', //Project[]
+  Open = 'Open', //string
+  Single_choice = 'SingleChoice', //radio -String
+  Multiple_choice = 'MultipleChoice', //check - string[]
+}
+
+
+export interface FormDefinition {
+  id: string;
+  title: string;
+  description: string;
+  img?: string;
+  sections: Section[];
+}
+
+export interface Section {
+  sId: string;
+  sTitle: string;
+  sDescription: string;
+  sQuestions: Question[];
+}
+
+export interface Question {
+  qId: string;
+  qType: QuestionType;
+  qTitle: string;
+  qOptions?: Project[] | Project_rate | string[] | string;
+}
+
+export interface Project {
+  pId: number;
+  title: string;
+  priority: number;
+}
+
+export interface Project_rate {
+  impacto: number;
+  factibilidad: number;
+  urgencia: number;
+}
+
+Para el ejemplo anterior, muestrame como construyes
+fb: FormBuilder

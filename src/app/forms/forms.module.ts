@@ -13,6 +13,9 @@ import { FormSectionComponent } from './components/form-section/form-section.com
 import { FormQuestionComponent } from './components/form-question/form-question.component';
 import { SimplePriorityComponent } from './components/simple-priority/simple-priority.component';
 import { MultipleProjectPriorityComponent } from './components/multiple-project-priority/multiple-project-priority.component';
+import { OpenComponent } from './components/open/open.component';
+import { SingleChoiceComponent } from './components/single-choice/single-choice.component';
+import { MultipleChoiceComponent } from './components/multiple-choice/multiple-choice.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { MultipleProjectPriorityComponent } from './components/multiple-project-
     FormQuestionComponent,
     SimplePriorityComponent,
     MultipleProjectPriorityComponent,
+    OpenComponent,
+    SingleChoiceComponent,
+    MultipleChoiceComponent,
   ],
   imports: [CommonModule, FormsRoutingModule, ReactiveFormsModule],
 })

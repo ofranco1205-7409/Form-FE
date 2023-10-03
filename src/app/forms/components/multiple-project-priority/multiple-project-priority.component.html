@@ -1,1 +1,21 @@
-<p>multiple-project-priority works!</p>
+<div class="card mb-2">
+  <div class="card-body">
+    <div [formGroup]="formGroup">
+      <h6>{{ question.qTitle }}</h6>
+      <pre>
+      formGroup.value:{{ formGroup.value | json }}
+    </pre
+      >
+      <div *ngFor="let option of qOptions; let i = index">
+        <h6>{{ option.pId }}{{ option.title }}</h6>
+        <div [formGroup]="projectGroup(i)" class="question-group">
+          <input type="text" formControlName="title" />
+          <input type="text" formControlName="priority" />
+        </div>
+      </div>
+      <div formArrayName="projects">
+        <div *ngFor="let project of projects.controls; let i = index"></div>
+      </div>
+    </div>
+  </div>
+</div>
